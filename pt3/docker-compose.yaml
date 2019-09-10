@@ -1,0 +1,17 @@
+version: "3"
+services:
+  master:
+    image: moby_dick:master
+    entrypoint: ["tail", "-f", "/dev/null"] # to keep master from exiting
+    container_name: moby_dick_master
+    environment:
+      - SLAVE_PATTERN=pt3_slave_#
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  slave:
+    image: moby_dick:slave
+    deploy:
+      restart_policy:
+        condition: on-failure
