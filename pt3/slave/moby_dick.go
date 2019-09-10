@@ -9,8 +9,6 @@ import (
 	"net/rpc/jsonrpc"
 )
 
-var urlPattern = "http://www.gutenberg.org/files/15/text/moby-###.txt"
-
 type WordMap map[string]int
 
 func (w *WordMap) WordCount(urls []string, wordCount *[]string) error {
